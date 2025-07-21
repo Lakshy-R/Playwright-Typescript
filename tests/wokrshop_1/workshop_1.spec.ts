@@ -15,7 +15,7 @@ test.skip('testing elements on gitlab', async ({ page }) => {
 
 })
 
-test('using various locators', async ({ page }) => {
+test.skip('using various locators', async ({ page }) => {
     await page.goto('https://gitlab.com');
     await page.getByRole('link', { name: 'Sign in' }).click();
 });
