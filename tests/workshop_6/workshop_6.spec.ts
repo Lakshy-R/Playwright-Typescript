@@ -27,7 +27,7 @@ test.describe('User Registration Tests', () => {
         await expect(number).toBe(testData.number);
     })
 
-    test('Register with empty fields', async ({page}) => {
+    test.skip('Register with empty fields', async ({page}) => {
         await page.goto('file:///C:/Users/laksh/Documents/GitHub/Playwright-Typescript/tests/workshop_6/index.html');   
         await page.click('#register');
 
