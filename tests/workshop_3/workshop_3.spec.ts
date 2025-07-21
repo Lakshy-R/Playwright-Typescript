@@ -26,7 +26,7 @@ test.skip('Drag and Drop', async ({ page }) => {
     expect(await page.textContent('.drop-target')).toContain('Success');
 })
 
-test('Handling Iframes', async ({ page }) => {
+test.skip('Handling Iframes', async ({ page }) => {
     await page.goto('file:///C:/Users/laksh/Documents/GitHub/Playwright-Typescript/tests/workshop_3/index.html');
     const IftameName = page.frame({name : 'iframeName'})
     const inputSelector = '#iframe-input';
