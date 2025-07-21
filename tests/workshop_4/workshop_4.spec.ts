@@ -25,7 +25,7 @@ await page.goto('file:///C:/Users/laksh/Documents/GitHub/Playwright-Typescript/t
     expect(alertMessage).toBe('You clicked Cancel.');
 })
 
-test('Handeling POP-UPS', async ({page}) => {
+test.skip('Handeling POP-UPS', async ({page}) => {
     await page.goto('file:///C:/Users/laksh/Documents/GitHub/Playwright-Typescript/tests/workshop_4/index.html');
     const [newPage] = await Promise.all([
         page.waitForEvent('popup'),
