@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import { AbstractPage } from './AbstractPage';
 import { Input } from './Input';
-import { Button } from './button';
+import { Button } from './Button';
 
 export class PageObject extends AbstractPage {
     button: Button;
