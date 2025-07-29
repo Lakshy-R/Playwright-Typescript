@@ -10,12 +10,12 @@ test.describe('Credit card web app tests', () => {
         await page.waitForLoadState('networkidle')
     });
 
-    test.skip('login', async ({ page }) => {
+    test('login', async ({ page }) => {
     const url = page.url();
     expect(url).toBe('https://lib-app-c921f.web.app/dashboard');
     })
 
-    test.skip('logout', async ({ page }) => {
+    test('logout', async ({ page }) => {
         await page.getByText('Log out', { exact: true }).click();
         await page.getByLabel('Dialog Close').nth(0).click();
         await page.waitForURL('**/auth/login');
@@ -23,14 +23,14 @@ test.describe('Credit card web app tests', () => {
         expect(url2).toBe('https://lib-app-c921f.web.app/auth/login');
     })
 
-    test.skip('see transations', async ({ page }) => {
+    test('see transations', async ({ page }) => {
         await page.getByText('Show All').click();
         await expect(page.getByText('Transaction History')).toBeVisible();
         await page.waitForURL(/.*\/dashboard\/transaction.*/);
         expect(page.url()).toMatch(/\/dashboard\/transaction\?id=.*/);
     })
 
-    test.skip('card activation', async ({ page }) => {
+    test('card activation', async ({ page }) => {
         await page.getByRole('button', { name: 'Manage' }).click();
         await page.waitForLoadState('networkidle');
         await page.click('text=Card Activation');
@@ -42,7 +42,7 @@ test.describe('Credit card web app tests', () => {
 
     })
 
-    test.skip('Card Limit', async ({ page }) => {
+    test('Card Limit', async ({ page }) => {
         await page.getByRole('button', { name: 'Manage' }).click();
         await page.waitForLoadState('networkidle');
         await page.click('text=Card Limits');
@@ -56,7 +56,7 @@ test.describe('Credit card web app tests', () => {
 
     })
 
-    test.skip('report card', async ({ page }) => {
+    test('report card', async ({ page }) => {
         await page.getByRole('button', { name: 'Manage' }).click();
         await page.waitForLoadState('networkidle');
         await page.click('text=Report Card');
@@ -66,7 +66,7 @@ test.describe('Credit card web app tests', () => {
         await page.waitForTimeout(1000);
     })
 
-    test.skip('Set/Change PIN', async ({ page }) => {
+    test('Set/Change PIN', async ({ page }) => {
         await page.getByRole('button', { name: 'Manage' }).click();
         await page.waitForLoadState('networkidle');
         await page.click('text=Set/Change PIN');
@@ -74,7 +74,7 @@ test.describe('Credit card web app tests', () => {
         await page.waitForTimeout(1000);
     })
 
-    test.skip('Top Up', async ({ page }) => {
+    test('Top Up', async ({ page }) => {
         await page.getByRole('button', { name: 'Top Up' }).click();
         await page.waitForLoadState('networkidle');
         await page.getByRole('combobox').click();

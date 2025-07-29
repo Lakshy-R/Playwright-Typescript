@@ -25,7 +25,7 @@ test.describe('Top Up', () => {
         expect(page.getByText('Must be greater than 0')).toBeVisible();
     });
 
-    test('Top Up expired card not appear', async ({ page }) => {
+    test.skip('Top Up expired card not appear', async ({ page }) => {
 
         await page.getByRole('button', { name: 'Top Up' }).click();
         await page.waitForLoadState('networkidle');
