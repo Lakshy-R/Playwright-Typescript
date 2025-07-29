@@ -2,7 +2,7 @@ import {test, expect} from '@playwright/test';
 import transations from './transations.json' assert { type: 'json' };
 import transationsCard from './transationsCard.json' assert { type: 'json' };
 import emptyTransations from './emptyTransations.json' assert { type: 'json' };
-
+import multipleTransations from './multipleTransations.json' assert { type: 'json' };
 
 test.describe('Check transation', () => {
     test.beforeEach(async ({ page }) => {
@@ -48,5 +48,30 @@ test.describe('Check transation', () => {
     
     })
 
+    test('Multiple Transations ', async ({ page }) => {
+        await page.route('*/**/api/v1/agb/cards', async (route) => {
+            const json = transationsCard;
+            await route.fulfill({ json });
+        });
+        await page.route('*/**/api/v1/agb/cards/transactions/100000189902', async (route) => {
+            const json = multipleTransations;
+            await route.fulfill({ json });
+            
+        });
+        await page.getByText('Show All').click();
+
+        for (let i = 0; i < multipleTransations.totalSize; i++) {
+            const txn = multipleTransations.transaction[i];
+            //const flag: boolean = (txn.isReverse === 'true' ? true : false)
+            //const flag1: boolean = (txn.transactionType === 'MONEY_IN' ? true : false)
+            const flag3 = (txn.isReverse === 'false' && txn.transactionType === 'MONEY_OUT' ? false : true)
+            const row = page.locator(`text=${txn.transactionId}`).locator('..').locator('..').getByText(flag3 ? 'Credit' : 'Debit').locator('..');
+            
+            await expect(row.getByText(txn.merchantName)).toBeVisible();
+            await expect(row.getByText(txn.billingAmount)).toBeVisible();
+            await expect(row.getByText(txn.billingCurrency)).toBeVisible();
+            await expect(row.getByText(txn.transactionId)).toBeVisible();
+        }
+    })
 
 })
