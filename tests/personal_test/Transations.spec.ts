@@ -2,7 +2,7 @@ import {test, expect} from '@playwright/test';
 import transations from './transations.json' assert { type: 'json' };
 import transationsCard from './transationsCard.json' assert { type: 'json' };
 import emptyTransations from './emptyTransations.json' assert { type: 'json' };
-import multipleTransations from './multipleTransations.json' assert { type: 'json' };
+import multipleTransations from './MultipleTransations.json' assert { type: 'json' };
 
 test.describe('Check transation', () => {
     test.beforeEach(async ({ page }) => {
