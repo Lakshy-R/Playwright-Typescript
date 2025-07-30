@@ -66,12 +66,43 @@ test.describe('Check transation', () => {
             //const flag1: boolean = (txn.transactionType === 'MONEY_IN' ? true : false)
             const flag3 = (txn.isReverse === 'false' && txn.transactionType === 'MONEY_OUT' ? false : true)
             const row = page.locator(`text=${txn.transactionId}`).locator('..').locator('..').getByText(flag3 ? 'Credit' : 'Debit').locator('..');
-            
+            const amount = flag3 ? `${txn.transactionAmount} ${txn.billingCurrency}` : `-${txn.transactionAmount} ${txn.billingCurrency}`;
             await expect(row.getByText(txn.merchantName)).toBeVisible();
-            await expect(row.getByText(txn.billingAmount)).toBeVisible();
-            await expect(row.getByText(txn.billingCurrency)).toBeVisible();
+            await expect(row.getByText(amount)).toBeVisible();
             await expect(row.getByText(txn.transactionId)).toBeVisible();
         }
     })
+
+    test('Multiple Transations with corrupted data', async ({ page }) => {
+    await page.route('*/**/api/v1/agb/cards', async (route) => {
+        const json = transationsCard;
+        await route.fulfill({ json });
+    });
+
+    await page.route('*/**/api/v1/agb/cards/transactions/100000189902', async (route) => {
+
+        const corrupted = JSON.parse(JSON.stringify(multipleTransations));
+
+        if (corrupted.transaction[0]) {
+            corrupted.transaction[0].transactionId = corrupted.transaction[0].transactionId.replace('7', '9');
+        }
+        await route.fulfill({ json: corrupted });
+    });
+
+    await page.getByText('Show All').click();
+
+
+    for (let i = 0; i < multipleTransations.totalSize; i++) {
+        const txn = multipleTransations.transaction[i];
+
+        const flag3 = (txn.isReverse === 'false' && txn.transactionType === 'MONEY_OUT' ? false : true)
+            const row = page.locator(`text=${txn.transactionId}`).locator('..').locator('..').getByText(flag3 ? 'Credit' : 'Debit').locator('..');
+            const amount = flag3 ? `${txn.transactionAmount} ${txn.billingCurrency}` : `-${txn.transactionAmount} ${txn.billingCurrency}`;
+            await expect(row.getByText(txn.merchantName)).toBeVisible();
+            await expect(row.getByText(amount)).toBeVisible();
+            await expect(row.getByText(txn.transactionId)).toBeVisible();
+    }
+    });
+
 
 })
