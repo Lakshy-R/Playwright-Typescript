@@ -1,0 +1,22 @@
+{
+    "timeZone": "Africa/Cairo",
+    "totalSize": 1,
+    "transaction": [
+        {
+            "billingAmount": "36.0",
+            "billingCurrency": "USD",
+            "cardNumber": "442441******7936",
+            "country": "0",
+            "mcc": "6010",
+            "merchantName": "MERCHANT SVIP ES",
+            "status": "1",
+            "transactionAmount": "36.0",
+            "transactionCurrency": "USD",
+            "transactionDate": "14-07-2025 18:37:58",
+            "transactionDescription": "P2P Debit part",
+            "transactionId": "95840247",
+            "transactionType": "MONEY_OUT",
+            "isReverse": "false"
+        }
+    ]
+}

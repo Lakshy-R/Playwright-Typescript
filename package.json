@@ -1,0 +1,15 @@
+{
+  "name": "Playwright-Typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Lakshy Rupani <lakshyrupani.lr@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.0.15"
+  },
+  "scripts": {},
+  "dependencies": {
+    "dotenv": "^17.2.1"
+  }
+}

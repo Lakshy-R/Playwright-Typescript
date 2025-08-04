@@ -1,0 +1,33 @@
+    {
+        "id": "100000189902",
+        "cardMask": "442441******7936",
+        "accountNumber": "71150090488",
+        "cardNumber": "442441******7936",
+        "availableBalance": 1.86,
+        "holdBalance": 0.00,
+        "currencyName": "USD",
+        "backOfficeStatus": "Stolen card, capture",
+        "status": "Inactive card",
+        "statusCode": "0",
+        "statusName": "INVALID CARD",
+        "state": "Issued",
+        "availableStatuses": [
+            {
+                "statusCode": "ReportLostOrStolen",
+                "name": "Report Lost Stolen"
+            },
+            {
+                "statusCode": "SetPin",
+                "name": "Set Pin"
+            }
+        ],
+        "cardholderName": "ELSAFI AA",
+        "expirationDate": "02.2024",
+        "expirDate": "02.2024",
+        "seqNumber": "1",
+        "nickname": null,
+        "productNumber": "70000764",
+        "virtual": null,
+        "isSingleUse": null,
+         "currencyCode": "840"
+    }
